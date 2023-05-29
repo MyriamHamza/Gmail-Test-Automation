@@ -1,0 +1,15 @@
+image: gradle:latest
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - gradle build
+
+run_unit_test:
+  stage: test
+  script:
+    - gradle test
