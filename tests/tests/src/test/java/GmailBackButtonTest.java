@@ -22,16 +22,16 @@ public class GmailBackButtonTest {
 
     @Before
     public void setUp() throws MalformedURLException {
-    ChromeOptions options = new ChromeOptions();
-    driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
-    driver.manage().window().maximize();
-    wait = new WebDriverWait(driver, 20);
+        ChromeOptions options = new ChromeOptions();
+        driver = new RemoteWebDriver(new URL("http://selenium:4444/wd/hub"), options);
+        driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, 20);
     }
 
     @Test
     public void testBackButton() {
-        // Navigate to Gmail
-        driver.get("https://mail.google.com/");
+        // Navigate to Gmail Home page
+        driver.get("https://www.google.com/intl/fr/gmail/about/");
 
         // Click on the "Create account" link
         WebElement createAccountLink = driver.findElement(By.xpath("//a[@data-action='sign in']"));
@@ -41,8 +41,9 @@ public class GmailBackButtonTest {
         driver.navigate().back();
 
         // Verify that we are back on the Gmail sign-in page
-        String expectedUrl = "https://accounts.google.com/signin/v2/identifier";
+        String expectedUrl = "https://www.google.com/intl/fr/gmail/about/";
         assertEquals(expectedUrl, driver.getCurrentUrl());
+        //close
         driver.close();
     }
 
